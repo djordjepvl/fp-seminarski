@@ -1,5 +1,7 @@
 module Mancala where
 
+import RoseTree 
+
 data Player = P1 | P2 deriving (Eq, Show)
 data GameState = GameState {board :: [Int], turn :: Player}
 data Outcome = Winner Player | Tie deriving (Eq, Show)
@@ -69,3 +71,10 @@ winnerOfGame (GameState b _)
     where
     p1Score = sum (map (b!!) [0..6])
     p2Score = sum (map (b!!) [7..13])
+
+
+gameTree :: Int -> GameState -> Rose GameState
+gameTree depth gs
+    | (depth == 0) || (gameIsFinished gs) = Node gs []
+    | otherwise = Node gs children
+    where children = [gameTree (depth-1) (applyMove m gs) | m<-moveOptions gs]
