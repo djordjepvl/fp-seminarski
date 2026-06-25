@@ -1,0 +1,19 @@
+{
+  "name": "Haskell",
+  "remoteUser": "vscode",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "haskell.haskell",
+        "phoityne.phoityne-vscode",
+        "eriksik2.vscode-ghci"
+      ],
+      "settings": {
+        "haskell.manageHLS": "GHCup"
+      }
+    }
+  }
+}
