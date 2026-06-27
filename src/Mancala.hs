@@ -76,3 +76,6 @@ gameTree depth gs
     | (depth == 0) || (gameIsFinished gs) = Node gs []
     | otherwise = Node gs children
     where children = [gameTree (depth-1) (applyMove m gs) | m<-moveOptions gs]
+
+mancalaInitialState :: GameState
+mancalaInitialState = GameState ( (replicate 6 4) ++ [0] ++ (replicate 6 4) ++ [0]) P1

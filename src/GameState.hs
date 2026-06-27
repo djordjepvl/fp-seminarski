@@ -69,3 +69,11 @@ applyMoveH m = GameStateOpHistory (\gs ->
             (gameIsFinished ngs, [ngs])
     )
 
+runGameState :: GameStateOp a -> GameState -> (a, GameState)
+runGameState (GameStateOp g) gs = g gs
+
+runGameStateH :: GameStateOpHistory a -> GameState -> (a, [GameState])
+runGameStateH (GameStateOpHistory g) gs = g gs
+
+initialize :: GameStateOpHistory ()
+initialize = GameStateOpHistory (\gs -> ( () , [] ))
